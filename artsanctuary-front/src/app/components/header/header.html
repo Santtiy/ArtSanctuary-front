@@ -1,0 +1,56 @@
+<header class="header">
+
+
+  <a routerLink="/" class="header__brand">
+    <img src="/images/img_ isotipo-artsanctuary.webp.png" alt="ArtSanctuary" class="header__logo">
+    <img src="/images/img_ wordmark-artsanctuary.webp.png" alt="ArtSanctuary" class="header__letra">
+    <span class="header__divider"></span>
+    <img src="/images/img_ logo-corpocarnaval.svg.png" alt="Corpocarnaval" class="header__logo">
+  </a>
+
+
+  <nav class="header__nav">
+    <a *ngFor="let link of links"
+       [routerLink]="link.path"
+       routerLinkActive="active"
+       [routerLinkActiveOptions]="{ exact: true }"
+       class="header__link">
+      {{ link.label }}
+    </a>
+  </nav>
+
+  <div class="header__actions">
+    <a routerLink="/explore" class="icon-btn" aria-label="Buscar">
+      <span class="material-symbols-outlined">search</span>
+    </a>
+    <button type="button" class="icon-btn" aria-label="Notificaciones">
+      <span class="material-symbols-outlined">notifications</span>
+    </button>
+
+    <span class="header__separator"></span>
+
+    <a routerLink="/upload" class="upload-btn">
+      <span class="upload-btn__text">
+        <span class="material-symbols-outlined">add</span>
+        UPLOAD WORK
+      </span>
+      <span class="upload-btn__arrow material-symbols-outlined">arrow_outward</span>
+    </a>
+
+
+    <div class="user">
+      <button type="button" class="user__toggle" (click)="toggleMenu()">
+        <span class="user__avatar material-symbols-outlined">person</span>
+        <span class="material-symbols-outlined">
+          {{ menuOpen() ? 'expand_less' : 'expand_more' }}
+        </span>
+      </button>
+
+      <ul class="user__menu" *ngIf="menuOpen()">
+        <li><a routerLink="/dashboard/workspaces" (click)="closeMenu()">My workspace</a></li>
+        <li><a routerLink="/upload" (click)="closeMenu()">Upload work</a></li>
+        <li><a routerLink="/login" (click)="closeMenu()">Sign out</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
