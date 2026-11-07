@@ -1,11 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-
-interface NavLink {
-  label: string;
-  path: string;
-}
+import { MAIN_LINKS } from '../../data/nav-links';
 
 @Component({
   selector: 'app-header',
@@ -14,13 +10,7 @@ interface NavLink {
   styleUrl: './header.scss',
 })
 export class Header {
-  links: NavLink[] = [
-    { label: 'Home', path: '/' },
-    { label: 'Gallery', path: '/gallery' },
-    { label: 'Explore', path: '/explore' },
-    { label: 'Tools', path: '/dashboard/tools' },
-    { label: 'Workspace', path: '/dashboard/workspaces' },
-  ];
+  links = MAIN_LINKS;
 
   menuOpen = signal(false);
 
