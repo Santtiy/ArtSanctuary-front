@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class Hero {
   private router = inject(Router);
 
-  heroImage = '/images/hero-bellosol.jpeg';
+  heroImage = '/images/home/hero-bellosol.jpeg';
   heroAlt = 'Atardecer entre nubes';
 
   goToGallery() {
