@@ -1,0 +1,128 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 62px;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__logo {
+    height: 28px;
+  }
+
+  &__divider,
+  &__separator {
+    width: 1px;
+    height: 24px;
+    background: var(--color-border);
+  }
+
+  &__nav {
+    display: flex;
+    gap: 32px;
+    margin-left: auto;
+    margin-right: 24px;
+  }
+
+  &__link {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-black);
+
+    &.active {
+      font-weight: 700;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+}
+
+.icon-btn {
+  display: flex;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-black);
+}
+
+.upload-btn {
+  display: flex;
+  height: 32px;
+  font-size: 12px;
+  font-weight: 700;
+
+  &__text {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 16px;
+    background: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  &__arrow {
+    display: flex;
+    align-items: center;
+    padding: 0 6px;
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+}
+
+.user {
+  position: relative;
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-size: 20px;
+  }
+
+  &__menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 12px);
+    min-width: 180px;
+    list-style: none;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+
+    a {
+      display: block;
+      padding: 10px 16px;
+      font-size: 14px;
+
+      &:hover {
+        background: var(--color-surface);
+      }
+    }
+  }
+}
