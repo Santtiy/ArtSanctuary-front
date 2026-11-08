@@ -6,7 +6,7 @@ import { ToolsSection } from '../../components/home/tools-section/tools-section'
 
 // [MANUEL-6] import { Categories } from '../../components/home/categories/categories';
 
-// [JUAN-7] import { RecentWorks } from '../../components/home/recent-works/recent-works';
+import { RecentWorks } from '../../components/home/recent-works/recent-works';
 
 // [SAMUEL-11] import { WorkspaceBanner } from '../../components/home/workspace-banner/workspace-banner';
 
@@ -20,7 +20,7 @@ import { ToolsSection } from '../../components/home/tools-section/tools-section'
 
     // [MANUEL-6] Categories,
 
-    // [JUAN-7] RecentWorks,
+    RecentWorks,
 
     // [SAMUEL-11] WorkspaceBanner,
   ],
