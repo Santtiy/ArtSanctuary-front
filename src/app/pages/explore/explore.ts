@@ -58,6 +58,12 @@ export class Explore {
     () => this.searchTerm().trim() !== '' || this.selectedCategory() !== 'all',
   );
 
+  emptyMessage = computed(() => {
+    const term = this.searchTerm().trim();
+
+    return term ? `No results for “${term}”` : 'No works in this category yet.';
+  });
+
   onSearch(event: Event): void {
     this.searchTerm.set((event.target as HTMLInputElement).value);
   }
