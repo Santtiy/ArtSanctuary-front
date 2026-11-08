@@ -1,1 +1,52 @@
-<p>tools works!</p>
+
+<section class="tools">
+
+  <!-- Encabezado -->
+  <header class="tools__header">
+
+    <h1 class="tools__title">
+      TOOLS
+    </h1>
+
+    <p class="tools__subtitle">
+      QUICK ASSISTANCE UTILITIES.
+      EVERYTHING RUNS IN YOUR BROWSER
+    </p>
+
+    <p class="tools__count">
+      {{ freeCount() }} free tools
+    </p>
+
+  </header>
+
+  <!-- Grid de herramientas -->
+  <div class="tools__grid">
+
+    <app-tool-card
+      *ngFor="let tool of tools()"
+      [tool]="tool"
+      variant="page"
+      [highlighted]="tool.id === highlightedId()"
+      (selectTool)="onToolSelected($event)"
+    >
+    </app-tool-card>
+
+  </div>
+
+  <!-- Información de la herramienta seleccionada -->
+  <div
+    class="tools__detail"
+    *ngIf="selectedTool() as tool"
+  >
+
+    <h2 class="tools__detail-title">
+      Selected tool: {{ tool.name }}
+    </h2>
+
+    <p class="tools__detail-description">
+      Coming soon to ArtSanctuary.
+    </p>
+
+  </div>
+
+</section>
