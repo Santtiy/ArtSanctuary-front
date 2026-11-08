@@ -1,10 +1,11 @@
+
 import { Component } from '@angular/core';
 import { Hero } from '../../components/home/hero/hero';
 import { Intro } from '../../components/home/intro/intro';
 
 import { ToolsSection } from '../../components/home/tools-section/tools-section';
 
-// [MANUEL-6] import { Categories } from '../../components/home/categories/categories';
+import { Categories } from '../../components/home/categories/categories';
 
 import { RecentWorks } from '../../components/home/recent-works/recent-works';
 
@@ -18,7 +19,7 @@ import { RecentWorks } from '../../components/home/recent-works/recent-works';
 
     ToolsSection,
 
-    // [MANUEL-6] Categories,
+    Categories,
 
     RecentWorks,
 
