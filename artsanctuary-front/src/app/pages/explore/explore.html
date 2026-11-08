@@ -92,6 +92,6 @@
       </article>
     </div>
 
-    <p class="explore__empty" *ngIf="results().length === 0">No results for “{{ searchTerm() }}”</p>
+    <p class="explore__empty" *ngIf="results().length === 0">{{ emptyMessage() }}</p>
   </ng-template>
 </section>
