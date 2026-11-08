@@ -1,0 +1,21 @@
+
+<section class="categories">
+
+  <!-- Título de la sección -->
+  <h2 class="categories__title">
+    BROWSE BY CATEGORY
+  </h2>
+
+  <!-- Contenedor de tarjetas -->
+  <div class="categories__grid">
+
+    <app-category-card
+      *ngFor="let category of categories()"
+      [category]="category"
+      (open)="goToCategory($event)"
+    >
+    </app-category-card>
+
+  </div>
+
+</section>
