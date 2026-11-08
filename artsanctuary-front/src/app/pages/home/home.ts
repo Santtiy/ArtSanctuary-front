@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Hero } from '../../components/home/hero/hero';
 import { Intro } from '../../components/home/intro/intro';
 
-// [JUAN-5] import { ToolsSection } from '../../components/home/tools-section/tools-section';
+import { ToolsSection } from '../../components/home/tools-section/tools-section';
 
 // [MANUEL-6] import { Categories } from '../../components/home/categories/categories';
 
@@ -16,7 +16,7 @@ import { Intro } from '../../components/home/intro/intro';
     Hero,
     Intro,
 
-    // [JUAN-5] ToolsSection,
+    ToolsSection,
 
     // [MANUEL-6] Categories,
 

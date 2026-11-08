@@ -1,0 +1,18 @@
+<section class="tools-section">
+  <header class="tools-section__header">
+    <h2 class="tools-section__title">TOOLS</h2>
+    <p class="tools-section__text">
+      Boards, reference grids, Notan, color mixing, and Gesture Drawing: everything in your browser,
+      without leaving ArtSanctuary.
+    </p>
+  </header>
+
+  <div class="tools-section__grid">
+    <app-tool-card
+      *ngFor="let tool of tools()"
+      [tool]="tool"
+      variant="home"
+      (selectTool)="onToolSelected($event)"
+    ></app-tool-card>
+  </div>
+</section>
