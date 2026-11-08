@@ -1,0 +1,121 @@
+
+.tools {
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  padding: 48px 62px 80px;
+
+  background: var(--color-white);
+
+  // Encabezado principal
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__title {
+    margin: 0;
+
+    font-family: var(--font-title);
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+
+    color: var(--color-primary);
+  }
+
+  // Descripción de herramientas
+  &__subtitle {
+    margin: 12px 0 0;
+
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 1px;
+
+    color: var(--color-black);
+  }
+
+  // Contador de herramientas gratuitas
+  &__count {
+    margin: 8px 0 0;
+
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 400;
+
+    color: var(--color-primary);
+  }
+
+  // Cuadrícula principal
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+
+    margin-top: 40px;
+  }
+
+  // Panel de herramienta seleccionada
+  &__detail {
+    margin-top: 32px;
+    padding: 20px;
+
+    border: 1px solid var(--color-primary);
+    background: var(--color-white);
+  }
+
+  &__detail-title {
+    margin: 0;
+
+    font-family: var(--font-title);
+    font-size: 18px;
+    font-weight: 700;
+
+    color: var(--color-primary);
+  }
+
+  &__detail-description {
+    margin: 8px 0 0;
+
+    font-family: var(--font-body);
+    font-size: 12px;
+    line-height: 1.5;
+
+    color: var(--color-black);
+  }
+
+  // Diseño para tabletas
+  @media (max-width: 1024px) {
+    padding: 40px 32px 64px;
+
+    &__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  // Diseño para dispositivos móviles
+  @media (max-width: 600px) {
+    padding: 32px 20px 48px;
+
+    &__title {
+      font-size: 36px;
+    }
+
+    &__subtitle {
+      font-size: 10px;
+    }
+
+    &__grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    &__detail {
+      padding: 16px;
+    }
+  }
+}
