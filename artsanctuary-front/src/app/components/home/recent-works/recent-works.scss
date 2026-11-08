@@ -1,0 +1,35 @@
+.recent-works {
+  padding: 64px 62px;
+  border-bottom: 1px solid var(--color-border);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-family: var(--font-title);
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-title);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-black);
+    text-decoration: none;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+  }
+}
