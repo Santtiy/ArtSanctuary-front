@@ -1,1 +1,39 @@
-<p>workspace works!</p>
+﻿<section class="workspace">
+  <header class="workspace__header">
+    <div>
+      <h1 class="workspace__title">WORKSPACE</h1>
+      <p class="workspace__subtitle">ARTSANCTUARY PROJECTS — FREE OR CORPOCARNAVAL ACCREDITATION</p>
+    </div>
+    <button class="workspace__button" type="button" (click)="openForm()">
+      <span class="material-symbols-outlined" aria-hidden="true">add</span> NEW WORKSPACE
+    </button>
+  </header>
+  <div class="workspace__form" *ngIf="showForm()">
+    <input class="workspace__input" #projectName type="text" aria-label="Project name" placeholder="Project name"
+      (keyup.enter)="createProject(projectName.value); projectName.value = ''">
+    <button class="workspace__button" type="button" (click)="createProject(projectName.value); projectName.value = ''">CREATE</button>
+    <button class="workspace__cancel" type="button" (click)="closeForm()">CANCEL</button>
+  </div>
+  <div *ngIf="projects().length === 0; else listTpl" class="workspace__empty">
+    <span class="material-symbols-outlined workspace__empty-icon" aria-hidden="true">folder_special</span>
+    <p>No projects yet.</p>
+    <button class="workspace__first" type="button" (click)="openForm()">CREATE THE FIRST ONE</button>
+  </div>
+  <ng-template #listTpl>
+    <p class="workspace__summary">{{ total() }} projects · {{ accreditedCount() }} accredited</p>
+    <div class="project" *ngFor="let project of projects()" [ngClass]="{ 'project--accredited': project.accredited }">
+      <h2 class="project__name">{{ project.name }}</h2>
+      <time class="project__date" [attr.datetime]="project.createdAt">{{ project.createdAt | date:'dd/MM/yyyy' }}</time>
+      <label class="project__accreditation">
+        <input type="checkbox" [checked]="project.accredited" (change)="toggleAccreditation(project.id)">
+        Corpocarnaval accreditation
+      </label>
+      <span class="badge" [ngClass]="{ 'badge--accredited': project.accredited, 'badge--free': !project.accredited }">
+        {{ project.accredited ? 'CORPOCARNAVAL' : 'FREE' }}
+      </span>
+      <button class="project__delete" type="button" [attr.aria-label]="'Delete ' + project.name" (click)="deleteProject(project.id)">
+        <span class="material-symbols-outlined" aria-hidden="true">delete</span>
+      </button>
+    </div>
+  </ng-template>
+</section>
