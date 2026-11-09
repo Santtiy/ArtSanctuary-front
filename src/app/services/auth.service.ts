@@ -26,6 +26,16 @@ export class AuthService {
     localStorage.removeItem(this.SESSION_KEY);
   }
 
+  emailExists(email: string): boolean {
+    return this.getUsers().some(user => user.email === email);
+  }
+
+  register(user: User): void {
+    const users = this.getUsers();
+    users.push(user);
+    localStorage.setItem(this.USERS_KEY, JSON.stringify(users));
+  }
+
   protected getUsers(): User[] {
     const raw = localStorage.getItem(this.USERS_KEY);
     return raw ? JSON.parse(raw) : [];
