@@ -9,7 +9,7 @@ import { Categories } from '../../components/home/categories/categories';
 
 import { RecentWorks } from '../../components/home/recent-works/recent-works';
 
-// [SAMUEL-11] import { WorkspaceBanner } from '../../components/home/workspace-banner/workspace-banner';
+import { WorkspaceBanner } from '../../components/home/workspace-banner/workspace-banner';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +23,7 @@ import { RecentWorks } from '../../components/home/recent-works/recent-works';
 
     RecentWorks,
 
-    // [SAMUEL-11] WorkspaceBanner,
+    WorkspaceBanner,
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
