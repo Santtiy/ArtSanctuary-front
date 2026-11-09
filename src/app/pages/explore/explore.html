@@ -1,0 +1,97 @@
+<section class="explore">
+  <div class="explore__search-row">
+    <div class="explore__search">
+      <span class="material-symbols-outlined explore__search-icon">search</span>
+      <input
+        class="explore__input"
+        type="text"
+        placeholder="Search works, artists, styles..."
+        [value]="searchTerm()"
+        (input)="onSearch($event)"
+      />
+    </div>
+
+    <button
+      type="button"
+      class="explore__clear"
+      aria-label="Clear search"
+      *ngIf="searchTerm()"
+      (click)="clearSearch()"
+    >
+      ×
+    </button>
+
+    <button type="button" class="explore__filters" (click)="toggleFilters()">
+      <span class="material-symbols-outlined">tune</span>
+      FILTERS
+    </button>
+  </div>
+
+  <div class="explore__chips" *ngIf="showFilters()">
+    <button
+      type="button"
+      *ngFor="let id of categoryFilters"
+      class="chip"
+      [ngClass]="{ 'chip--active': selectedCategory() === id }"
+      (click)="selectCategory(id)"
+    >
+      {{ id | uppercase }}
+    </button>
+  </div>
+
+  <h2 class="explore__heading">
+    <span class="material-symbols-outlined">trending_up</span>
+    What to explore today?
+  </h2>
+
+  <div class="explore__tags">
+    <button
+      type="button"
+      *ngFor="let tag of tags"
+      class="tag"
+      [ngClass]="{ 'tag--active': selectedTag() === tag }"
+      (click)="selectTag(tag)"
+    >
+      #{{ tag | uppercase }}
+    </button>
+  </div>
+
+  <h2 class="explore__section-title">Disciplines</h2>
+
+  <div class="explore__disciplines">
+    <article
+      *ngFor="let d of disciplines()"
+      class="explore__discipline"
+      (click)="goToDiscipline(d.id)"
+    >
+      <p class="explore__discipline-name">{{ d.id | uppercase }}</p>
+      <p class="explore__discipline-count">{{ d.count }} Registered works</p>
+    </article>
+  </div>
+
+  <ng-container *ngIf="!isSearching(); else resultsTpl">
+    <h2 class="explore__section-title">New records</h2>
+
+    <div class="explore__row">
+      <article *ngFor="let artwork of newRecords" class="explore__item">
+        <img class="explore__image" [src]="artwork.image" [alt]="artwork.title" />
+        <p class="explore__item-title">{{ artwork.title }}</p>
+        <p class="explore__item-author">{{ artwork.author | uppercase }}</p>
+      </article>
+    </div>
+  </ng-container>
+
+  <ng-template #resultsTpl>
+    <h2 class="explore__section-title">Results ({{ results().length }})</h2>
+
+    <div class="explore__grid">
+      <article *ngFor="let artwork of results()" class="explore__item">
+        <img class="explore__image" [src]="artwork.image" [alt]="artwork.title" />
+        <p class="explore__item-title">{{ artwork.title }}</p>
+        <p class="explore__item-author">{{ artwork.author | uppercase }}</p>
+      </article>
+    </div>
+
+    <p class="explore__empty" *ngIf="results().length === 0">{{ emptyMessage() }}</p>
+  </ng-template>
+</section>

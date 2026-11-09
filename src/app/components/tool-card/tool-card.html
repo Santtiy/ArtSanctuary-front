@@ -1,0 +1,38 @@
+<article
+  class="tool-card"
+  [ngClass]="{
+    'tool-card--home': variant === 'home',
+    'tool-card--page': variant === 'page',
+    'tool-card--highlighted': highlighted
+  }"
+  (click)="onSelect()"
+>
+  <ng-container *ngIf="variant === 'home'; else pageTpl">
+    <div class="tool-card__icon-area">
+      <span class="material-symbols-outlined tool-card__home-icon">{{ tool.icon }}</span>
+    </div>
+
+    <p class="tool-card__description">{{ tool.description }}</p>
+
+    <div class="tool-card__bar">
+      <div class="tool-card__name-box">
+        <span class="tool-card__bar-name">{{ tool.name | uppercase }}</span>
+      </div>
+      <div class="tool-card__arrow">
+        <span class="material-symbols-outlined">north_east</span>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #pageTpl>
+    <div class="tool-card__top">
+      <div class="tool-card__icon-box">
+        <span class="material-symbols-outlined tool-card__page-icon">{{ tool.icon }}</span>
+      </div>
+      <span class="tool-card__free" *ngIf="tool.free">FREE</span>
+    </div>
+
+    <h3 class="tool-card__name">{{ tool.name }}</h3>
+    <p class="tool-card__text">{{ tool.description }}</p>
+  </ng-template>
+</article>

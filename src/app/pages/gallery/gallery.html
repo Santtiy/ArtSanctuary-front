@@ -1,0 +1,31 @@
+<section class="gallery">
+  <h1 class="gallery__title">Gallery</h1>
+
+  <nav class="gallery__tabs">
+    <button
+      type="button"
+      *ngFor="let filter of filters"
+      class="gallery__tab"
+      [ngClass]="{ 'gallery__tab--active': selected() === filter.id }"
+      (click)="selectFilter(filter.id)"
+    >
+      {{ filter.label | uppercase }}
+    </button>
+  </nav>
+
+  <p class="gallery__count">{{ filteredArtworks().length }} works</p>
+
+  <div class="gallery__grid">
+    <app-artwork-card
+      *ngFor="let artwork of filteredArtworks()"
+      [artwork]="artwork"
+      [liked]="isLiked(artwork.id)"
+      (likeToggled)="onLikeToggled($event)"
+    ></app-artwork-card>
+  </div>
+
+  <div class="gallery__empty" *ngIf="filteredArtworks().length === 0">
+    <span class="material-symbols-outlined gallery__empty-icon">photo_camera</span>
+    <p>No works in this category yet.</p>
+  </div>
+</section>

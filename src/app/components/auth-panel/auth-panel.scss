@@ -1,0 +1,19 @@
+﻿:host { display: block; height: 100%; min-width: 0; }
+.auth-panel {
+  height: 100%;
+  min-height: 320px;
+  background: linear-gradient(rgba(255, 255, 255, .75), rgba(255, 255, 255, .75)), url('/images/auth/auth-bg.png') center / cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 48px 24px;
+  color: var(--color-primary);
+
+  &__content { text-align: center; }
+  &__title { font: 700 40px var(--font-title); }
+  &__welcome { margin-top: 12px; font: 10px/1.5 var(--font-mono); letter-spacing: 2px; }
+  &__tagline { margin-top: 16px; font-size: 13px; font-style: italic; }
+  &__version { position: absolute; bottom: 16px; left: 24px; font: 9px var(--font-mono); opacity: .5; }
+}

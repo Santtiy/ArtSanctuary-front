@@ -1,0 +1,126 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.tool-card {
+  height: 100%;
+  background: var(--color-surface);
+  cursor: pointer;
+
+  &:hover {
+    outline: 2px solid var(--color-primary);
+  }
+
+  &--home {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 280px;
+    padding: 16px;
+  }
+
+  &--page {
+    min-height: 140px;
+    padding: 20px;
+    border: 1px solid var(--color-border);
+  }
+
+  &--highlighted {
+    background: var(--color-white);
+    outline: 2px solid var(--color-primary);
+  }
+
+  // Variante HOME
+  &__icon-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 140px;
+  }
+
+  &__home-icon {
+    font-size: 64px;
+    color: var(--color-primary);
+  }
+
+  &__description {
+    font-size: 12px;
+    line-height: 1.5;
+    opacity: 0.7;
+  }
+
+  &__bar {
+    display: flex;
+    margin-top: auto;
+  }
+
+  &__name-box {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    height: 32px;
+    padding: 0 12px;
+    background: var(--color-white);
+  }
+
+  &__bar-name {
+    font-family: var(--font-title);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-black);
+  }
+
+  &__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+
+  // Variante PAGE
+  &__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  &__icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--color-white);
+  }
+
+  &__page-icon {
+    font-size: 20px;
+    color: var(--color-black);
+  }
+
+  &__free {
+    padding: 2px 8px;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 9px;
+  }
+
+  &__name {
+    margin-top: 16px;
+    font-family: var(--font-title);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  &__text {
+    margin-top: 6px;
+    font-size: 12px;
+    opacity: 0.7;
+  }
+}

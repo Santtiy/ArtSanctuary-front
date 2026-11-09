@@ -1,0 +1,53 @@
+
+<article
+  class="category-card"
+  role="button"
+  tabindex="0"
+  (click)="onOpen()"
+  (keydown.enter)="onOpen()"
+  (keydown.space)="onSpace($event)"
+>
+
+  <!-- Imagen o icono de la categoría -->
+  <div class="category-card__media">
+
+    <img
+      *ngIf="category.image; else iconTpl"
+      class="category-card__image"
+      [src]="category.image"
+      [alt]="category.label"
+    />
+
+    <!-- Alternativa cuando no existe imagen -->
+    <ng-template #iconTpl>
+      <div class="category-card__icon-container">
+        <span
+          class="material-symbols-outlined"
+          aria-hidden="true"
+        >
+          {{ category.icon }}
+        </span>
+      </div>
+    </ng-template>
+
+  </div>
+
+  <!-- Barra inferior -->
+  <div class="category-card__footer">
+
+    <div class="category-card__label">
+      {{ category.label | uppercase }}
+    </div>
+
+    <div class="category-card__arrow">
+      <span
+        class="material-symbols-outlined"
+        aria-hidden="true"
+      >
+        north_east
+      </span>
+    </div>
+
+  </div>
+
+</article>

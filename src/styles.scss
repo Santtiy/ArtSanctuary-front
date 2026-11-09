@@ -1,0 +1,13 @@
+:root {
+  --color-primary: #22306e;   // azul del botón UPLOAD WORK y de los títulos
+  --color-black: #000;
+  --color-white: #fff;
+  --color-surface: #ecedf2;   // gris de las tarjetas
+  --color-border: #d9dbe3;
+  --font-body: 'Barlow', sans-serif;
+  --font-title: 'Barlow Semi Condensed', sans-serif;
+  --font-mono: 'Space Mono', monospace;   // labels tipo "EMAIL", "#ABSTRACT"
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); color: var(--color-primary); }
+a { text-decoration: none; color: inherit; }
