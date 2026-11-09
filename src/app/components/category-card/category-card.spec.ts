@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CategoryCard } from './category-card';
+import type { Category } from '../../models/category.model';
 
 describe('CategoryCard', () => {
   let component: CategoryCard;
@@ -13,6 +14,11 @@ describe('CategoryCard', () => {
 
     fixture = TestBed.createComponent(CategoryCard);
     component = fixture.componentInstance;
+    component.category = {
+      id: 'painting',
+      label: 'Painting',
+      image: '/images/categories/painting.jpg'
+    } satisfies Category;
     await fixture.whenStable();
   });
 
