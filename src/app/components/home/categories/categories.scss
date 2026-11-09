@@ -3,17 +3,17 @@
   width: 100%;
   box-sizing: border-box;
 
-  padding: 64px 62px;
+  padding: 18px 24px 24px;
 
   background: var(--color-white);
   border-bottom: 1px solid var(--color-border);
 
   // Título principal de la sección
   &__title {
-    margin: 0 0 32px;
+    margin: 0 0 18px;
 
     font-family: var(--font-title);
-    font-size: 40px;
+    font-size: 38px;
     font-weight: 700;
     line-height: 1.2;
 
