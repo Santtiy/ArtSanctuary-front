@@ -1,1 +1,93 @@
-<p>upload works!</p>
+﻿<form class="upload" [formGroup]="form" (ngSubmit)="publish()">
+  <header class="upload__header">
+    <h1>Artwork record</h1>
+    <p>Enter the metadata for your piece. Use the museum standard to preserve your artwork context in the central database.</p>
+  </header>
+  <p class="upload__success" *ngIf="successMessage()" role="status">{{ successMessage() }}</p>
+  <div class="upload__grid">
+    <div class="upload__preview">
+      <label class="upload__dropzone">
+        <input type="file" aria-label="Select artwork image" accept="image/png,image/jpeg,image/webp" (change)="onFileSelected($event)" hidden>
+        <img class="upload__image" *ngIf="previewUrl() as url; else emptyTpl" [src]="url" alt="Selected artwork preview">
+        <ng-template #emptyTpl>
+          <span class="material-symbols-outlined upload__photo-icon" aria-hidden="true">add_photo_alternate</span>
+          <span class="upload__select">SELECT FILE</span>
+          <span class="upload__hint">JPG, PNG or WebP. Max 2MB.</span>
+        </ng-template>
+      </label>
+      <p class="upload__filename" *ngIf="fileName()">{{ fileName() }}</p>
+      <p class="upload__error" *ngIf="fileError()" role="alert">{{ fileError() }}</p>
+      <p class="upload__info"><span class="material-symbols-outlined" aria-hidden="true">info</span> UPLOAD DATE: {{ today | date:'dd/MM/yyyy' }} (AUTO-GENERATED)</p>
+    </div>
+    <div class="upload__details">
+      <fieldset class="upload__card">
+        <legend class="upload__card-title"><span class="material-symbols-outlined" aria-hidden="true">label</span> Identification</legend>
+        <div class="upload__field">
+          <label for="artwork-title">ARTWORK TITLE *</label>
+          <input id="artwork-title" formControlName="title" placeholder="E.g. Echoes of Silence" [attr.aria-invalid]="isInvalid('title')" aria-describedby="title-error">
+          <p id="title-error" class="upload__error" *ngIf="isInvalid('title')">Title is required (min. 3 characters).</p>
+        </div>
+        <div class="upload__row">
+          <div class="upload__field">
+            <label for="section">SECTION *</label>
+            <select id="section" formControlName="section" [attr.aria-invalid]="isInvalid('section')" aria-describedby="section-error">
+              <option value="">Select…</option>
+              <option *ngFor="let option of sections" [value]="option.value">{{ option.label }}</option>
+            </select>
+            <p id="section-error" class="upload__error" *ngIf="isInvalid('section')">Choose a section.</p>
+          </div>
+          <div class="upload__field">
+            <label for="visibility">VISIBILITY</label>
+            <select id="visibility" formControlName="visibility"><option *ngFor="let option of visibilities" [value]="option.value">{{ option.label }}</option></select>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset class="upload__card">
+        <legend class="upload__card-title"><span class="material-symbols-outlined" aria-hidden="true">calendar_month</span> Creation date</legend>
+        <div class="upload__row">
+          <div class="upload__field">
+            <label for="date-format">FORMAT</label>
+            <select id="date-format" formControlName="dateFormat"><option *ngFor="let option of dateFormats" [value]="option.value">{{ option.label }}</option></select>
+          </div>
+          <div class="upload__field"><label for="date-value">VALUE</label><input id="date-value" formControlName="dateValue"></div>
+        </div>
+      </fieldset>
+      <fieldset class="upload__card">
+        <legend class="upload__card-title"><span class="material-symbols-outlined" aria-hidden="true">architecture</span> Physical specifications</legend>
+        <div class="upload__row">
+          <div class="upload__field">
+            <label for="medium">MEDIUM</label><input id="medium" formControlName="medium" placeholder="Oil on canvas">
+            <div class="upload__chips"><button *ngFor="let option of mediumOptions" type="button" class="chip" [ngClass]="{ 'chip--active': form.controls.medium.value === option }" [attr.aria-pressed]="form.controls.medium.value === option" (click)="setMedium(option)">{{ option }}</button></div>
+          </div>
+          <div class="upload__field">
+            <label for="technique">TECHNIQUE</label><input id="technique" formControlName="technique" placeholder="Brush">
+            <div class="upload__chips"><button *ngFor="let option of techniqueOptions" type="button" class="chip" [ngClass]="{ 'chip--active': form.controls.technique.value === option }" [attr.aria-pressed]="form.controls.technique.value === option" (click)="setTechnique(option)">{{ option }}</button></div>
+          </div>
+        </div>
+        <div class="upload__field">
+          <span class="upload__label">DIMENSIONS</span>
+          <div class="upload__dimensions">
+            <input type="number" min="1" formControlName="width" placeholder="Width" aria-label="Width">
+            <span aria-hidden="true">x</span>
+            <input type="number" min="1" formControlName="height" placeholder="Height" aria-label="Height">
+            <select formControlName="unit" aria-label="Dimension unit"><option *ngFor="let unit of units" [value]="unit">{{ unit }}</option></select>
+          </div>
+          <p class="upload__error" *ngIf="isInvalid('width') || isInvalid('height')">Dimensions must be at least 1.</p>
+        </div>
+      </fieldset>
+      <fieldset class="upload__card">
+        <legend class="upload__card-title"><span class="material-symbols-outlined" aria-hidden="true">gavel</span> Context and rights</legend>
+        <div class="upload__field">
+          <label for="description">CURATORIAL DESCRIPTION</label><textarea id="description" formControlName="description" placeholder="Context or concept behind the artwork..."></textarea>
+          <p class="upload__error" *ngIf="isInvalid('description')">Description must be 500 characters or fewer.</p>
+        </div>
+        <div class="upload__row">
+          <div class="upload__field"><label for="copyright-holder">COPYRIGHT HOLDER</label><input id="copyright-holder" formControlName="copyrightHolder" placeholder="Author / copyright holder"></div>
+          <div class="upload__field"><label for="license">LICENSE</label><select id="license" formControlName="license"><option *ngFor="let option of licenses" [value]="option.value">{{ option.label }}</option></select></div>
+        </div>
+        <div class="upload__field"><label for="tags">TAGS (COMMA SEPARATED)</label><input id="tags" formControlName="tags" placeholder="landscape, dark, melancholy"></div>
+      </fieldset>
+      <div class="upload__actions"><button class="upload__publish" type="submit"><span class="material-symbols-outlined" aria-hidden="true">publish</span> PUBLISH WORK</button></div>
+    </div>
+  </div>
+</form>
