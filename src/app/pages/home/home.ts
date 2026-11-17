@@ -7,6 +7,8 @@ import { ToolsSection } from '../../components/home/tools-section/tools-section'
 
 import { Categories } from '../../components/home/categories/categories';
 
+import { ArtistsSection } from '../../components/home/artists-section/artists-section';
+
 import { RecentWorks } from '../../components/home/recent-works/recent-works';
 
 import { WorkspaceBanner } from '../../components/home/workspace-banner/workspace-banner';
@@ -20,6 +22,8 @@ import { WorkspaceBanner } from '../../components/home/workspace-banner/workspac
     ToolsSection,
 
     Categories,
+
+    ArtistsSection,
 
     RecentWorks,
 

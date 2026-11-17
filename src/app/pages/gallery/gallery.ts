@@ -3,6 +3,7 @@ import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ArtworkCard } from '../../components/artwork-card/artwork-card';
 import { ARTWORKS } from '../../data/artworks';
+import { ARTISTS, CARROZAS } from '../../data/artisan-profiles';
 import { Artwork, ArtworkCategory } from '../../models/artwork.model';
 import { LikesService } from '../../services/likes.service';
 
@@ -24,10 +25,12 @@ export class Gallery implements OnInit {
     { id: 'sculpture', label: 'Sculpture' },
     { id: 'illustration', label: 'Illustration' },
     { id: 'photography', label: 'Photography' },
+    { id: 'artist', label: 'Artists' },
+    { id: 'carroza', label: 'Carrozas' },
   ];
 
   selected = signal<FilterId>('all');
-  artworks = signal<Artwork[]>(ARTWORKS);
+  artworks = signal<Artwork[]>([...ARTWORKS, ...ARTISTS, ...CARROZAS]);
 
   filteredArtworks = computed(() =>
     this.selected() === 'all'

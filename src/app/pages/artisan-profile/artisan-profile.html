@@ -1,0 +1,49 @@
+<section class="artisan-profile" *ngIf="profile() as artisan; else profileNotFound">
+  <a class="artisan-profile__back" routerLink="/">
+    <span class="material-symbols-outlined">arrow_back</span>
+    BACK TO RECENT WORKS
+  </a>
+
+  <div class="artisan-profile__hero">
+    <img class="artisan-profile__image" [src]="artisan.image" [alt]="artisan.name" />
+
+    <div class="artisan-profile__intro">
+      <p class="artisan-profile__eyebrow">ARTISAN PROFILE · CARROZA</p>
+      <h1 class="artisan-profile__name">{{ artisan.name }}</h1>
+      <p class="artisan-profile__proposal">{{ artisan.proposal }}</p>
+      <p class="artisan-profile__description">{{ artisan.description }}</p>
+    </div>
+  </div>
+
+  <div class="artisan-profile__content">
+    <div class="artisan-profile__section">
+      <p class="artisan-profile__eyebrow">CARROZA 2027</p>
+      <h2>Works in the carroza</h2>
+      <ul class="artisan-profile__elements">
+        <li *ngFor="let work of artisan.works">{{ work }}</li>
+      </ul>
+      <a class="artisan-profile__carroza-link" [routerLink]="['/carrozas', artisan.id]">
+        VIEW CARROZA PROFILE
+        <span class="material-symbols-outlined">north_east</span>
+      </a>
+    </div>
+
+    <div class="artisan-profile__section">
+      <p class="artisan-profile__eyebrow">PHOTO RECORD</p>
+      <h2>Carroza model</h2>
+      <div class="artisan-profile__gallery">
+        <figure class="artisan-profile__figure" *ngFor="let photo of artisan.photos">
+          <img class="artisan-profile__photo" [src]="photo" [alt]="artisan.proposal" />
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #profileNotFound>
+  <section class="artisan-profile artisan-profile--empty">
+    <span class="material-symbols-outlined">person_search</span>
+    <h1>Artisan profile not found</h1>
+    <a routerLink="/">Return to recent works</a>
+  </section>
+</ng-template>

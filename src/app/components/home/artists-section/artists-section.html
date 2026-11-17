@@ -1,0 +1,17 @@
+<section class="artists-section">
+  <header class="artists-section__header">
+    <h2 class="artists-section__title">ARTISTS</h2>
+    <a class="artists-section__link" routerLink="/gallery" [queryParams]="{ category: 'artist' }">
+      VIEW ALL <span class="material-symbols-outlined">north_east</span>
+    </a>
+  </header>
+
+  <div class="artists-section__grid">
+    <app-artwork-card
+      *ngFor="let artist of artists()"
+      [artwork]="artist"
+      [liked]="isLiked(artist.id)"
+      (likeToggled)="onLikeToggled($event)"
+    ></app-artwork-card>
+  </div>
+</section>

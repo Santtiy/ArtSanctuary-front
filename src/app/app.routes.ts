@@ -8,6 +8,8 @@ import { Workspace } from './pages/workspace/workspace';
 import { Upload } from './pages/upload/upload';
 import { Login } from './pages/login/login';
 import { Register } from './pages/register/register';
+import { ArtisanProfile } from './pages/artisan-profile/artisan-profile';
+import { CarrozaProfile } from './pages/carroza-profile/carroza-profile';
 
 export const routes: Routes = [
   {
@@ -20,6 +22,8 @@ export const routes: Routes = [
       { path: 'dashboard/tools', component: Tools },
       { path: 'dashboard/workspaces', component: Workspace },
       { path: 'upload', component: Upload },
+      { path: 'artisans/:id', component: ArtisanProfile },
+      { path: 'carrozas/:id', component: CarrozaProfile },
     ],
   },
   { path: 'login', component: Login },    

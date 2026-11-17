@@ -1,0 +1,243 @@
+.carroza-profile {
+  padding: 48px 62px 80px;
+
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 48px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--color-black);
+    font-family: var(--font-title);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  &__back .material-symbols-outlined,
+  &__caption .material-symbols-outlined {
+    font-size: 18px;
+  }
+
+  &__header {
+    display: grid;
+    grid-template-columns: minmax(240px, 0.8fr) minmax(0, 1.2fr);
+    gap: 32px;
+    align-items: center;
+    max-width: 1100px;
+  }
+
+  &__header-image {
+    display: block;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border: 1px solid var(--color-border);
+  }
+
+  &__eyebrow {
+    margin: 0 0 12px;
+    color: var(--color-primary);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+  }
+
+  &__header h1 {
+    margin: 0;
+    color: var(--color-black);
+    font-family: var(--font-title);
+    font-size: clamp(42px, 7vw, 96px);
+    line-height: 0.95;
+  }
+
+  &__author {
+    margin: 20px 0 0;
+    color: var(--color-primary);
+    font-family: var(--font-title);
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  &__body {
+    max-width: 760px;
+    margin: 24px 0 0;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  &__description {
+    max-width: 760px;
+  }
+
+  &__content {
+    display: grid;
+    gap: 48px;
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--color-border);
+  }
+
+  &__section h2 {
+    margin: 0 0 20px;
+    font-family: var(--font-title);
+    font-size: 28px;
+  }
+
+  &__gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  &__figure {
+    position: relative;
+    min-width: 0;
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    background: var(--color-black);
+  }
+
+  &__photo {
+    display: block;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  &__caption {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: flex-end;
+    padding: 12px;
+    background: rgb(0 0 0 / 80%);
+    color: var(--color-white);
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  &__caption button {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 7px;
+    border: 1px solid var(--color-white);
+    background: transparent;
+    color: var(--color-white);
+    font-family: var(--font-title);
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  &__works {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px 24px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__works li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 14px;
+  }
+
+  &__lightbox {
+    position: fixed;
+    z-index: 10;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 48px;
+    background: rgb(0 0 0 / 88%);
+  }
+
+  &__lightbox img {
+    max-width: 92vw;
+    max-height: 88vh;
+    object-fit: contain;
+  }
+
+  &__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--color-white);
+    background: transparent;
+    color: var(--color-white);
+    cursor: pointer;
+  }
+
+  &--empty {
+    min-height: 60vh;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 12px;
+    text-align: center;
+  }
+
+  &--empty .material-symbols-outlined {
+    font-size: 48px;
+    color: var(--color-primary);
+  }
+
+  &--empty h1 {
+    margin: 0;
+    font-family: var(--font-title);
+  }
+
+  &--empty a {
+    color: var(--color-primary);
+  }
+}
+
+@media (max-width: 760px) {
+  .carroza-profile {
+    padding: 32px 20px 56px;
+
+    &__back {
+      margin-bottom: 32px;
+    }
+
+    &__gallery,
+    &__works {
+      grid-template-columns: 1fr;
+    }
+
+    &__header {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    &__header-image {
+      height: 250px;
+    }
+
+    &__photo {
+      height: 250px;
+    }
+
+    &__caption {
+      justify-content: flex-end;
+    }
+
+    &__lightbox {
+      padding: 24px;
+    }
+  }
+}
