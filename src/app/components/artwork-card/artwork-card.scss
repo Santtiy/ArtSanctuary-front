@@ -1,4 +1,13 @@
 .artwork-card {
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+
+  &--interactive {
+    cursor: pointer;
+  }
+
   &__media {
     position: relative;
     height: 300px;
@@ -71,6 +80,16 @@
   &__author {
     font-size: 11px;
     opacity: 0.6;
+  }
+
+  &__description {
+    display: -webkit-box;
+    margin-top: 6px;
+    overflow: hidden;
+    font-size: 11px;
+    line-height: 1.4;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
 
   &__arrow {
