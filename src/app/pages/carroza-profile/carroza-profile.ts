@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ARTISAN_PROFILES } from '../../data/artisan-profiles';
@@ -12,6 +12,7 @@ import { ArtisanProfile } from '../../models/artisan-profile.model';
 })
 export class CarrozaProfile {
   private route = inject(ActivatedRoute);
+  private location = inject(Location);
 
   profile = signal<ArtisanProfile | undefined>(this.findProfile());
   selectedPhoto = signal<string | undefined>(undefined);
@@ -32,5 +33,9 @@ export class CarrozaProfile {
 
   closePhoto(): void {
     this.selectedPhoto.set(undefined);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }
