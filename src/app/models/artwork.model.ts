@@ -1,4 +1,10 @@
-export type ArtworkCategory = 'painting' | 'sculpture' | 'illustration' | 'photography';
+export type ArtworkCategory =
+  | 'painting'
+  | 'sculpture'
+  | 'illustration'
+  | 'photography'
+  | 'artist'
+  | 'carroza';
 
 export interface Artwork {
   id: number;
@@ -7,4 +13,5 @@ export interface Artwork {
   category: ArtworkCategory;
   image: string;
   likes: number;
+  description?: string;
 }

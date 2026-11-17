@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ARTWORKS } from '../../../data/artworks';
+import { CARROZAS } from '../../../data/artisan-profiles';
 import { Artwork } from '../../../models/artwork.model';
 import { LikesService } from '../../../services/likes.service';
 import { ArtworkCard } from '../../artwork-card/artwork-card';
@@ -15,7 +15,7 @@ import { ArtworkCard } from '../../artwork-card/artwork-card';
 export class RecentWorks {
   private likes = inject(LikesService);
 
-  artworks = signal<Artwork[]>(ARTWORKS.slice(0, 6));
+  artworks = signal<Artwork[]>(CARROZAS.slice(0, 6));
 
   isLiked(id: number): boolean {
     return this.likes.isLiked(id);

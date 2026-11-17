@@ -1,0 +1,76 @@
+<section class="carroza-profile" *ngIf="profile() as carroza; else profileNotFound">
+  <a class="carroza-profile__back" [routerLink]="['/artisans', carroza.id]">
+    <span class="material-symbols-outlined">arrow_back</span>
+    BACK TO ARTISAN PROFILE
+  </a>
+
+  <header class="carroza-profile__header">
+    <img class="carroza-profile__header-image" [src]="carroza.photos[0]" [alt]="carroza.proposal" />
+    <div>
+      <p class="carroza-profile__eyebrow">CARROZA PROFILE · 2027</p>
+      <h1>{{ carroza.proposal }}</h1>
+      <p class="carroza-profile__author">{{ carroza.name }}</p>
+    </div>
+  </header>
+
+  <div class="carroza-profile__content">
+    <section class="carroza-profile__section">
+      <p class="carroza-profile__eyebrow">DESCRIPTION</p>
+      <h2>About the carroza</h2>
+      <div class="carroza-profile__description">
+        <p class="carroza-profile__body">{{ carroza.description }}</p>
+      </div>
+    </section>
+
+    <section class="carroza-profile__section">
+      <p class="carroza-profile__eyebrow">PHOTO RECORD</p>
+      <h2>Carroza model</h2>
+      <div class="carroza-profile__gallery">
+        <figure class="carroza-profile__figure" *ngFor="let photo of carroza.photos">
+          <img class="carroza-profile__photo" [src]="photo" [alt]="carroza.proposal" />
+          <figcaption class="carroza-profile__caption">
+            <button type="button" (click)="openPhoto(photo)">
+              VIEW FULL
+              <span class="material-symbols-outlined">open_in_full</span>
+            </button>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="carroza-profile__section">
+      <p class="carroza-profile__eyebrow">WORKS</p>
+      <h2>Elements in the carroza</h2>
+      <ul class="carroza-profile__works">
+        <li *ngFor="let work of carroza.works">{{ work }}</li>
+      </ul>
+    </section>
+  </div>
+</section>
+
+<ng-template #profileNotFound>
+  <section class="carroza-profile carroza-profile--empty">
+    <span class="material-symbols-outlined">image_search</span>
+    <h1>Carroza profile not found</h1>
+    <a routerLink="/">Return to recent works</a>
+  </section>
+</ng-template>
+
+<div
+  class="carroza-profile__lightbox"
+  *ngIf="selectedPhoto() as photo"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Full carroza photo"
+  (click)="closePhoto()"
+>
+  <button
+    type="button"
+    class="carroza-profile__close"
+    aria-label="Close full photo"
+    (click)="closePhoto()"
+  >
+    <span class="material-symbols-outlined">close</span>
+  </button>
+  <img [src]="photo" [alt]="profile()?.proposal || 'Carroza model'" (click)="$event.stopPropagation()" />
+</div>

@@ -1,4 +1,13 @@
-<article class="artwork-card">
+<article
+  class="artwork-card"
+  [class.artwork-card--interactive]="hasProfile"
+  [attr.role]="hasProfile ? 'link' : null"
+  [attr.tabindex]="hasProfile ? 0 : null"
+  [attr.aria-label]="hasProfile ? 'Ver perfil de ' + artwork.author : null"
+  (click)="openProfile()"
+  (keydown.enter)="openProfile()"
+  (keydown.space)="$event.preventDefault(); openProfile()"
+>
   <div class="artwork-card__media">
     <img class="artwork-card__image" [src]="artwork.image" [alt]="artwork.title" />
 
@@ -9,6 +18,7 @@
       class="artwork-card__like"
       [ngClass]="{ 'artwork-card__like--active': liked }"
       (click)="onLike($event)"
+      (keydown)="$event.stopPropagation()"
     >
       <span class="material-symbols-outlined artwork-card__like-icon">favorite</span>
       {{ totalLikes }}
@@ -19,6 +29,7 @@
     <div class="artwork-card__text">
       <h3 class="artwork-card__title">{{ artwork.title | uppercase }}</h3>
       <p class="artwork-card__author">{{ artwork.author }}</p>
+      <p class="artwork-card__description" *ngIf="artwork.description">{{ artwork.description }}</p>
     </div>
 
     <div class="artwork-card__arrow">
