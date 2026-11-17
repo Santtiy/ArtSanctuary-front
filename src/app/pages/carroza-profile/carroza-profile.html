@@ -1,8 +1,8 @@
 <section class="carroza-profile" *ngIf="profile() as carroza; else profileNotFound">
-  <a class="carroza-profile__back" [routerLink]="['/artisans', carroza.id]">
+  <button type="button" class="carroza-profile__back" (click)="goBack()">
     <span class="material-symbols-outlined">arrow_back</span>
-    BACK TO ARTISAN PROFILE
-  </a>
+    BACK
+  </button>
 
   <header class="carroza-profile__header">
     <img class="carroza-profile__header-image" [src]="carroza.photos[0]" [alt]="carroza.proposal" />
